@@ -2,21 +2,22 @@
         const cards = [
         {
             location: "홍대입구",
-            title: "RUN",
             artist: "방탄소년단",
-            image: "/runner.jpg",
+            date: "2025-05-14",
+            image: "/bts.jpg",
         },
         {
             location: "강남역",
-            title: "Butter",
-            artist: "BTS",
-            image: "/runner.jpg",
+    
+            artist: "로제",
+            date: "2025-05-14",
+            image: "/Rose.jpg",
         },
         {
             location: "신촌",
-            title: "Dynamite",
-            artist: "BTS",
-            image: "/runner.jpg",
+            artist: "제니",
+            date: "2025-05-14",
+            image: "/jennie.jpg",
         },
         ];
     
@@ -29,9 +30,15 @@
                 className="min-w-[280px] bg-white shadow-sm rounded-lg overflow-hidden"
                 >
                 <div className="px-4 pt-4">
+<<<<<<< HEAD
                     <p className="text-[18px] font-semibold text-[#3160D8]">{card.location}</p>
                     <p className="text-[16px] font-medium">{card.title}</p>
                     <p className="text-[16px] text-gray-400">{card.artist}</p>
+=======
+                    <p className="text-[18px] font-semibold">{card.location}</p>
+                    <p className="text-[16px] font-medium">{card.artist}</p>
+                    <p className="text-[16px] text-gray-400">{card.date}</p>
+>>>>>>> a17481825c47aaf28f22459a484e0be8cd76fd82
                 </div>
                 <div className="px-4 pt-4 pb-4">
                     <img
