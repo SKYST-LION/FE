@@ -15,8 +15,9 @@ const Home = () => {
       {/* 3) 메인 콘텐츠: 동일한 좌우 패딩(px-4) */}
       <main className="w-full max-w-4xl mx-auto px-4 py-6 flex flex-col gap-10"/>
         {/* “최신 버스킹” 헤더에도 px-4 가 적용된 상태 */}
-        <h2 className="text-[32px] font-bold px-4 pt-4">최신 버스킹</h2>
-        
+        <h2 className="text-[32px] font-bold px-4 pt-4 -mt-8">최신 버스킹</h2>
+        {/* 밑에 회색 실선 */}
+        <hr className="border-t-2 border-gray-200 mb-6 mx-4" />
       <BuskingCard/>
       <MapBox/>
 
