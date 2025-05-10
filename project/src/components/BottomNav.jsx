@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  MdOutlineChatBubbleOutline,
+  MdLeaderboard,
   MdSearch,
   MdHome,
   MdPersonOutline,
@@ -12,7 +12,7 @@ const BottomNav = () => {
   const navigate = useNavigate();
 
   const tabs = [
-    { path: "/chat", icon: <MdOutlineChatBubbleOutline />, label: "chat" },
+    { path: "/ranking", icon: <MdLeaderboard />, label: "ranking" },
     { path: "/search", icon: <MdSearch />, label: "search" },
     { path: "/", icon: <MdHome />, label: "home" },
     { path: "/schedule", icon: <TbCalendarSearch />, label: "schedule" },

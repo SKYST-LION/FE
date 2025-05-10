@@ -1,23 +1,42 @@
 // src/pages/DetailPage.jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { StarIcon } from '@heroicons/react/24/solid';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axiosInstance from "../api/axiosInstance";
+import LoadingSpinner from "../components/LoadingSpinner";
+import { useParams } from "react-router-dom";
+import { StarIcon } from "@heroicons/react/24/solid";
 
 const DetailPage = () => {
+  const { id } = useParams();
+  const [performance, setPerformance] = useState(null);
   const navigate = useNavigate();
 
-  // 예시 공연 날짜 데이터
-  const dates = [
-    { label: '2025.05.15 오후 6:00', available: true },
-    { label: '2025.05.18 오후 6:00', available: false },
-    { label: '2025.05.18 오후 6:00', available: false },
-  ];
+  useEffect(() => {
+    const fetchPerformance = async () => {
+      try {
+        const res = await axiosInstance.get(`/api/performance/${id}`);
+        setPerformance(res.data);
+      } catch (error) {
+        console.error("공연 데이터 로드 실패:", error);
+      }
+    };
+    fetchPerformance();
+  }, [id]);
+
+  if (!performance) {
+    return <LoadingSpinner />;
+  }
 
   // 구매하기 버튼 클릭 핸들러 (예시)
   const handlePurchase = () => {
-    alert('구매 로직을 여기에 연결하세요.');
+    alert("구매 로직을 여기에 연결하세요.");
   };
+
+  const dates = [
+    { label: "2025.05.15 오후 6:00", available: true },
+    { label: "2025.05.18 오후 6:00", available: false },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -30,8 +49,10 @@ const DetailPage = () => {
         {/* 2) 메인 이미지 */}
         <div className="w-full h-64 bg-gray-200 rounded-md overflow-hidden mb-4">
           <img
-            src="/placeholder.jpg"  /* 실제 이미지 경로로 바꿔주세요 */
-            alt="Busking"
+            src={
+              performance.cover_image || "/placeholder.jpg"
+            } /* 실제 이미지 경로로 바꿔주세요 */
+            alt={performance.title}
             className="w-full h-full object-cover"
           />
         </div>
@@ -42,7 +63,7 @@ const DetailPage = () => {
             길거리 공연 웨이팅 1위 보컬 맛집
           </p>
           <div className="flex items-center space-x-2">
-            <h1 className="text-lg font-semibold">K-POP 버스킹</h1>
+            <h1 className="text-lg font-semibold">{performance.title}</h1>
             <StarIcon className="h-5 w-5 text-yellow-400" />
             <span className="text-sm font-medium">4.8 (24)</span>
           </div>
@@ -51,7 +72,7 @@ const DetailPage = () => {
         {/* 4) 위치 정보 & 버튼 */}
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="text-sm text-gray-600">서울, 홍대입구</p>
+            <p className="text-sm text-gray-600">{performance.location}</p>
             <p className="text-sm text-gray-600">5천~1만원대</p>
           </div>
           <button className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50">
@@ -69,10 +90,11 @@ const DetailPage = () => {
               <button
                 key={i}
                 disabled={!d.available}
-                className={`w-full py-3 border rounded-md text-sm font-medium ${d.available
-                    ? 'border-[#3160D8] text-[#3160D8]'
-                    : 'border-gray-300 text-gray-400'
-                  }`}
+                className={`w-full py-3 border rounded-md text-sm font-medium ${
+                  d.available
+                    ? "border-[#3160D8] text-[#3160D8]"
+                    : "border-gray-300 text-gray-400"
+                }`}
               >
                 {d.label}
               </button>
@@ -100,21 +122,16 @@ const DetailPage = () => {
 
         {/* 7) 셋 리스트 */}
         <div className="mb-6">
-          <p className="text-sm font-semibold text-gray-800 mb-2">
-            셋 리스트
-          </p>
+          <p className="text-sm font-semibold text-gray-800 mb-2">셋 리스트</p>
 
           {/* 회색 구분선 */}
           <hr className="border-gray-200 mb-4" />
 
           <div className="max-w-sm mx-auto px-10 divide-y divide-gray-200">
-            {[
-              'like JENNIE - 제니 (JENNIE)',
-              'Whiplash - IVE (아이브)',
-              'APT - 로제, Bruno Mars',
-              '미치게 그리워서 - 황가람',
-              '어떻게 이별까지 사랑하겠어 - 악뮤',
-            ].map((song, idx) => (
+            {(performance.setlist
+              ? performance.setlist.split(",").map((s) => s.trim())
+              : []
+            ).map((song, idx) => (
               <div key={idx} className="flex items-center py-2">
                 <span className="text-gray-500">{idx + 1}</span>
                 <span className="ml-3 flex-1 text-gray-700">{song}</span>

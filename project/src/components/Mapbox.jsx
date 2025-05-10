@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 
 const MapBox = () => {
+  const performances = [
+    { id: 1, name: "방탄소년단 버스킹", lat: 37.5665, lng: 126.9780 },
+    { id: 2, name: "아이유 버스킹", lat: 37.5555, lng: 126.9707 },
+    { id: 3, name: "이무진 버스킹", lat: 37.5581, lng: 126.9985 },
+  ];
+
   useEffect(() => {
     if (document.querySelector('script[src*="kakao.com"]')) {
       console.log("⚠️ Kakao Maps SDK already loaded.");
@@ -22,40 +28,39 @@ const MapBox = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById("map");
 
-        
+        const renderMap = (lat, lng) => {
+          const options = {
+            center: new window.kakao.maps.LatLng(lat, lng),
+            level: 3,
+          };
+          const map = new window.kakao.maps.Map(container, options);
+
+          // 마커 찍기
+          performances.forEach((perf) => {
+            const markerPosition = new window.kakao.maps.LatLng(perf.lat, perf.lng);
+            new window.kakao.maps.Marker({
+              map,
+              position: markerPosition,
+              title: perf.name,
+            });
+          });
+        };
 
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            const {latitude, longitude} = position.coords;
-            const options = {
-              center: new window.kakao.maps.LatLng(latitude, longitude),
-              level: 3,
-            };
-            new window.kakao.maps.Map(container, options);
+            const { latitude, longitude } = position.coords;
+            renderMap(latitude, longitude);
           },
           (error) => {
-            console.warn("위치가져오기 실패 그냥 서울시청으로 할게", error);
-
-            const options = {
-              center: new window.kakao.maps.LatLng(37.5665, 126.978),
-              level: 3,
-            };
-            new window.kakao.maps.Map(container, options);
-    
-            console.log("성공");
-
+            console.warn("위치가져오기 실패, 서울시청 중심으로 대체", error);
+            renderMap(37.5665, 126.978);
           }
-        )
-
-        
-
-        
-        
+        );
       });
     };
 
     script.onerror = () => {
-      console.error("❌ Kakao script 로드 실패 으악");
+      console.error("❌ Kakao script 로드 실패");
     };
 
     document.head.appendChild(script);
