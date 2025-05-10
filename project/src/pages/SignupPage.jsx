@@ -19,7 +19,7 @@ const SignupPage = () => {
     <div className="min-h-screen flex flex-col">
       {/* 1) 스크롤 가능한 메인 폼 영역 */}
       <div className="flex-grow">
-        <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow">
+        <div className="max-w-md mx-auto bg-white px-6 pt-0 pb-6 rounded-lg shadow">
           {/* 뒤로가기 */}
           <button
             onClick={() => navigate(-1)}
@@ -29,7 +29,7 @@ const SignupPage = () => {
           </button>
 
           {/* 제목 */}
-          <h2 className="text-2xl font-semibold text-gray-800 mb-12">
+          <h2 className="text-[28px] font-semibold text-[#021C48] mb-12">
             회원가입
           </h2>
 

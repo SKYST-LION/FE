@@ -17,13 +17,8 @@ const DetailPage = () => {
   return (
     <div className="min-h-screen bg-white-100">
       <div className="max-w-md mx-auto bg-white p-4">
-        {/* 1) 뒤로가기 버튼 */}
-        <button
-          onClick={() => navigate(-1)}
-          className="mb-4 flex items-center text-gray-700 hover:text-gray-900"
-        >
-          <ArrowLeftIcon className="h-6 w-6" />
-        </button>
+        {/* 1) 섹션 제목 */}
+        <h2 className="text-[28px] font-bold pt-4 -mt-8 mb-8 text-[#021C48]" >공연 정보</h2>
 
         {/* 2) 메인 이미지 */}
         <div className="w-full h-64 bg-gray-200 rounded-md overflow-hidden mb-4">

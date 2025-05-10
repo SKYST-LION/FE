@@ -10,17 +10,17 @@ const LoginHeaderAndInputs = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col flex-grow max-w-md mx-auto bg-white p-6 rounded-lg shadow">
+    <div className="min-h-screen flex flex-col flex-grow max-w-md mx-auto bg-white px-6 pt-0 pb-6 rounded-lg shadow">
           {/* 뒤로가기 */}
           <button
             onClick={() => navigate(-1)}
             className="flex items-center mb-2 text-gray-700 hover:text-gray-900"
           >
-            <IoIosArrowBack className="text-2xl text-gray-600 cursor-pointer" />
+            <IoIosArrowBack className="text-[28px] text-gray-600 cursor-pointer" />
           </button>
 
           {/* 제목 */}
-          <h2 className="text-2xl font-semibold text-gray-800 mb-12">
+          <h2 className="text-[28px] font-semibold text-[#021C48] mb-12">
             로그인
           </h2>
 
