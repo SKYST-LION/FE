@@ -6,6 +6,9 @@ import MyPage from "./pages/MyPage.jsx";
 import DetailPage from "./pages/DetailPage.jsx";
 import BottomNav from "./components/BottomNav.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
+import SidebarMenu from "./pages/SidebarMenu.jsx"
+import PerformanceRegisterPage from "./pages/PerformanceRegisterPage.jsx"
+
 
 function App() {
   return (
@@ -17,6 +20,8 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/sidebarmenu" element={<SidebarMenu />} />
+        <Route path="/registerpage" element={<PerformanceRegisterPage />} />
       </Routes>
       <BottomNav />
     </Router>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
-import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaGoogle, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axiosInstance from "../api/axiosInstance";
@@ -44,13 +44,6 @@ const LoginHeaderAndInputs = () => {
 
   return (
     <div className="min-h-screen flex flex-col flex-grow max-w-md mx-auto bg-white px-6 pt-0 pb-6 rounded-lg shadow">
-          {/* 뒤로가기 */}
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center mb-2 text-gray-700 hover:text-gray-900"
-          >
-            <IoIosArrowBack className="text-[28px] text-gray-600 cursor-pointer" />
-          </button>
 
           {/* 제목 */}
           <h2 className="text-[28px] font-semibold text-[#021C48] mb-12">
@@ -108,7 +101,7 @@ const LoginHeaderAndInputs = () => {
         
           {/* Social Login Icons */}
           <div className="flex justify-center space-x-6 text-gray-500 text-2xl mt-4 mb-4">
-            <FaTwitter className="cursor-pointer hover:text-blue-400" />
+            <FaGoogle className="cursor-pointer hover:text-black" />
             <FaInstagram className="cursor-pointer hover:text-pink-500" />
             <FaFacebook className="cursor-pointer hover:text-blue-600" />
           </div>
