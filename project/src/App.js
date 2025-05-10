@@ -5,6 +5,7 @@ import Login from "./pages/Login.jsx";
 import MyPage from "./pages/MyPage.jsx";
 import DetailPage from "./pages/DetailPage.jsx";
 import BottomNav from "./components/BottomNav.jsx";
+import SignupPage from "./pages/SignupPage.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/detail" element={<DetailPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
       <BottomNav />
     </Router>

@@ -2,17 +2,26 @@ import React, { useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const LoginHeaderAndInputs = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <div className="px-4 pt-4">
-      {/* 헤더: 뒤로가기 + 제목 */}
-      <div className="flex items-center mb-6">
-        <IoIosArrowBack className="text-2xl text-gray-600 cursor-pointer" />
-        <h1 className="ml-3 text-2xl font-semibold">로그인</h1>
-      </div>
+    <div className="min-h-screen flex flex-col flex-grow max-w-md mx-auto bg-white p-6 rounded-lg shadow">
+          {/* 뒤로가기 */}
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center mb-2 text-gray-700 hover:text-gray-900"
+          >
+            <IoIosArrowBack className="text-2xl text-gray-600 cursor-pointer" />
+          </button>
+
+          {/* 제목 */}
+          <h2 className="text-2xl font-semibold text-gray-800 mb-12">
+            로그인
+          </h2>
 
       {/* 이메일 & 비밀번호 입력 폼 */}
       <form className="space-y-4">
