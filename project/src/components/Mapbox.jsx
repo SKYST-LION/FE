@@ -22,6 +22,8 @@ const MapBox = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById("map");
 
+        
+
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const {latitude, longitude} = position.coords;

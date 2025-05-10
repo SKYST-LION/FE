@@ -2,14 +2,11 @@ import ScrollCarousel from "../components/ScrollCarousel";
 import MapBox from "../components/Mapbox";
 
 const Home = () => {
-  const TopBanner = () => (
-    <div className="w-full h-[71px] bg-[#3160D8] flex-shrink-0" />
-  );
-
+  
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* 상단 파란 영역 */}
-      <TopBanner />
+      
 
       {/* 메인 콘텐츠 */}
       <main className="w-full max-w-4xl mx-auto px-4 py-6 flex flex-col gap-10">
