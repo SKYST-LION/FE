@@ -17,7 +17,7 @@ const Home = () => {
         <h2 className="text-[32px] font-bold pt-4 -mt-8">최신 버스킹</h2>
 
         {/* 구분선 */}
-        <hr className="border-t-2 border-gray-200 mb-6" />
+        <hr className="border-t-2 border-gray-200 mb-0 -mt-6" />
 
         {/* 콘텐츠 */}
         <ScrollCarousel/>

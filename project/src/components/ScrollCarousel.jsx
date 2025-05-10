@@ -22,7 +22,7 @@ const ScrollCarousel = () => {
   
     return (
       <div className="overflow-x-auto w-full">
-        <div className="flex gap-4 px-4">
+        <div className="flex gap-4 px-4 -mt-5">
           {cards.map((card, index) => (
             <div
               key={index}
