@@ -5,10 +5,14 @@ import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axiosInstance from "../api/axiosInstance";
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
+
 
 const LoginHeaderAndInputs = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const {setUser, setIsLoggedIn} = useContext(AuthContext);
 
   const [form, setForm] = useState({
     email: "",
@@ -23,11 +27,15 @@ const LoginHeaderAndInputs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post("/api/user/login/", {
+      const res = await axiosInstance.post("/api/user/login/", {
         email: form.email,
         password: form.password,
       });
-      console.log(response);
+
+      setUser(res.data.user);
+      setIsLoggedIn(true);
+
+
       navigate("/")
     } catch (error) {
       console.error("로그인 실패:", error);

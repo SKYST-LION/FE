@@ -2,9 +2,13 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { HiMenu } from 'react-icons/hi';
 import logo from '../components/logo.png';
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 
 const NavBar = () => {
   const navigate = useNavigate(); // ✅ useNavigate 훅 사용
+  const { isLoggedIn} = useContext(AuthContext);
 
   return (
     <nav
@@ -27,21 +31,25 @@ const NavBar = () => {
         </Link>
       </div>
 
-      {/* 오른쪽: 로그인 버튼 */}
-      <button
-        className="flex-none focus:outline-none"
-        onClick={() => navigate("/login")} // ✅ 로그인 클릭 시 /login으로 이동
-      >
-        <span
-          className="
-            text-[#3160D8]
-            text-[16px] leading-normal
-            font-inter font-bold
-          "
+      {/* 오른쪽: 로그인 or 마이페이지 */}
+      {isLoggedIn ? (
+        <button
+          onClick={() => navigate("/mypage")}
+          className="flex items-center gap-2 focus:outline-none"
         >
-          로그인
-        </span>
-      </button>
+          {/* 프로필 아이콘 */}
+          <FaUserCircle className="w-[30px] h-[30px] text-[#3160D8]" />
+        </button>
+      ) : (
+        <button
+          className="flex-none focus:outline-none"
+          onClick={() => navigate("/login")}
+        >
+          <span className="text-[#3160D8] text-[16px] font-bold">
+            로그인
+          </span>
+        </button>
+      )}
     </nav>
   );
 };
