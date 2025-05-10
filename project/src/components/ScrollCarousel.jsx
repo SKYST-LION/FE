@@ -23,18 +23,18 @@
     
         return (
         <div className="overflow-x-auto w-full">
-            <div className="flex gap-4 px-4 -mt-5">
+            <div className="flex gap-4 px-4">
             {cards.map((card, index) => (
                 <div
                 key={index}
                 className="min-w-[280px] bg-white shadow-sm rounded-lg overflow-hidden"
                 >
-                <div className="px-4 pt-4">
-                    <p className="text-[18px] font-semibold">{card.location}</p>
-                    <p className="text-[16px] font-medium">{card.artist}</p>
-                    <p className="text-[16px] text-gray-400">{card.date}</p>
+                <div className="px-4 pt-4 bg-[#3160D8] rounded-t-lg">
+                    <p className="text-[24px] text-white font-semibold">{card.location}</p>
+                    <p className="text-[16px] text-white font-medium">{card.artist}</p>
+                    <p className="text-[12px] text-gray-400">{card.date}</p>
                 </div>
-                <div className="px-4 pt-4 pb-4">
+                <div className="px-4 pt-4 pb-4 bg-[#3160D8]">
                     <img
                         src={card.image}
                         alt={card.title}
