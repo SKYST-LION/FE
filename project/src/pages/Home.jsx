@@ -19,8 +19,9 @@ const Home = () => {
         <ScrollCarousel/>
         <MapBox />
       </main>
+      
 
-    
+      
     </div>
   );
 };

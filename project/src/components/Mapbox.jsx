@@ -68,9 +68,6 @@ const MapBox = () => {
         <div className="flex items-center gap-2">
           <h2 className="text-base font-bold">내 주변 버스킹 찾기</h2>
         </div>
-        <button className="border border-[#6B3E00] text-[#6B3E00] text-xs px-3 py-1 rounded-full">
-          조건 검색
-        </button>
       </div>
 
       {/* 지도 */}
