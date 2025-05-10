@@ -1,5 +1,6 @@
 // NavBar.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { HiMenu } from 'react-icons/hi';
 import logo from '../components/logo.png';
 
@@ -19,11 +20,13 @@ const NavBar = () => (
 
     {/* 가운데: 로고 이미지 (flex-1 + flex justify-center 로 정중앙 배치) */}
     <div className="flex-1 flex justify-center">
+      <Link to="/" className="cursor-pointer">
       <img
         src={logo}
         alt="Logo"
         className="h-6"            /* 원하는 높이(px)로 조절 */
       />
+      </Link>
     </div>
 
 
