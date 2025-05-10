@@ -1,6 +1,7 @@
 // NavBar.jsx
 import React from 'react';
 import { HiMenu } from 'react-icons/hi';
+import logo from '../components/logo.png';
 
 const NavBar = () => (
   <nav
@@ -16,18 +17,15 @@ const NavBar = () => (
       <HiMenu className="w-6 h-6 text-[#3160D8]" />
     </button>
 
-    {/* 2) 가운데: 남는 공간 차지 + 텍스트 중앙 */}
-    <div className="flex-1 text-center">
-      <span
-        className="
-          text-[#3160D8]
-          text-[15px] leading-normal
-          font-inter font-bold
-        "
-      >
-        HOME
-      </span>
+    {/* 가운데: 로고 이미지 (flex-1 + flex justify-center 로 정중앙 배치) */}
+    <div className="flex-1 flex justify-center">
+      <img
+        src={logo}
+        alt="Logo"
+        className="h-6"            /* 원하는 높이(px)로 조절 */
+      />
     </div>
+
 
     {/* 3) 오른쪽 로그인 (고정 너비) */}
     <button className="flex-none focus:outline-none">
