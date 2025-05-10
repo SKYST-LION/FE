@@ -1,11 +1,11 @@
 import ScrollCarousel from "../components/ScrollCarousel";
 import MapBox from "../components/Mapbox";
+import {BottomNav} from "../components/BottomNav"
 
 const Home = () => {
   
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      {/* 상단 파란 영역 */}
       
 
       {/* 메인 콘텐츠 */}
@@ -20,6 +20,9 @@ const Home = () => {
         <ScrollCarousel/>
         <MapBox />
       </main>
+
+    {/* 하단 네비게이션 바 */}
+    <BottomNav />
     </div>
   );
 };
