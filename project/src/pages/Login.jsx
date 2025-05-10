@@ -4,10 +4,35 @@ import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 import { FaGoogle, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import axiosInstance from "../api/axiosInstance";
 
 const LoginHeaderAndInputs = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setForm((prev) => ({...prev, [name]: value}));
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.post("/api/user/login/", {
+        email: form.email,
+        password: form.password,
+      });
+      console.log(response);
+      navigate("/")
+    } catch (error) {
+      console.error("로그인 실패:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col flex-grow max-w-md mx-auto bg-white px-6 pt-0 pb-6 rounded-lg shadow">
@@ -18,18 +43,26 @@ const LoginHeaderAndInputs = () => {
           </h2>
 
       {/* 이메일 & 비밀번호 입력 폼 */}
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <input
+          name="email"
           type="email"
           placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-200 rounded-lg bg-gray-50 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
+          required
         />
 
         <div className="relative">
           <input
+            name="password"
             type={showPassword ? 'text' : 'password'}
             placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-200 rounded-lg bg-gray-50 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
+            required
           />
           <button
             type="button"
@@ -70,7 +103,7 @@ const LoginHeaderAndInputs = () => {
             type="submit"
             className="w-full py-2 bg-[#3160D8] text-white rounded-lg hover:bg-[#3160D8] transition-colors mt-6"
           >
-            Sign In
+            로그인
           </button>
       </form>
         {/* Sign Up Link */}
