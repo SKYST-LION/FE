@@ -17,13 +17,13 @@ const NavBar = () => {
     >
       {/* 왼쪽: 햄버거 메뉴 */}
       <button className="flex-none focus:outline-none">
-        <HiMenu className="w-10 h-10 text-[#3160D8]" />
+        <HiMenu className="w-8 h-8 text-[#3160D8]" />
       </button>
 
       {/* 가운데: 로고 */}
       <div className="flex-1 flex justify-center">
         <Link to="/" className="cursor-pointer">
-          <img src={logo} alt="Logo" className="h-20" />
+          <img src={logo} alt="Logo" className="h-16" />
         </Link>
       </div>
 
@@ -35,7 +35,7 @@ const NavBar = () => {
         <span
           className="
             text-[#3160D8]
-            text-[20px] leading-normal
+            text-[16px] leading-normal
             font-inter font-bold
           "
         >
