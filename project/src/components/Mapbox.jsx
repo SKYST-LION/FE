@@ -74,7 +74,7 @@ const MapBox = () => {
       </div>
 
       {/* 지도 */}
-      <div className="w-full h-[300px] rounded-lg overflow-hidden">
+      <div className="w-full h-[250px] rounded-lg overflow-hidden">
         <div id="map" className="w-full h-full"></div>
       </div>
     </div>
