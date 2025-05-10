@@ -63,15 +63,15 @@ const PerformanceRegisterPage = () => {
 
               {/* 소속/팀명 */}
               <div className="px-2">
-                <p className="text-sm text-gray-400">연세대학교 밴드부</p>
-                <p className="text-lg font-semibold text-[#021C48]">소나기</p>
+                <p className="text-sm text-center text-gray-400">연세대학교 밴드부</p>
+                <p className="text-lg text-center font-semibold text-gray-600">프롤로그</p>
               </div>
 
               {/* 액션 리스트 */}
               <div className="divide-y">
                 {[
                   { icon: PlusIcon,         label: '공연 설명하기' },
-                  { icon: RiAnticlockwise2Line, label: '셀리스트 추가하기' },
+                  { icon: RiAnticlockwise2Line, label: '셋리스트 추가하기' },
                   { icon: CurrencyDollarIcon, label: '티켓 가격 결정하기' },
                   { icon: CreditCardIcon,   label: '결제수단 등록' },
                 ].map((item, idx) => (

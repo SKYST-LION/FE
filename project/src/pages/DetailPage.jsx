@@ -1,4 +1,4 @@
-// DetailPage.jsx
+// src/pages/DetailPage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
@@ -14,16 +14,23 @@ const DetailPage = () => {
     { label: '2025.05.18 오후 6:00', available: false },
   ];
 
+  // 구매하기 버튼 클릭 핸들러 (예시)
+  const handlePurchase = () => {
+    alert('구매 로직을 여기에 연결하세요.');
+  };
+
   return (
-    <div className="min-h-screen bg-white-100">
+    <div className="min-h-screen bg-gray-100">
       <div className="max-w-md mx-auto bg-white p-4">
         {/* 1) 섹션 제목 */}
-        <h2 className="text-[28px] font-bold pt-4 -mt-8 mb-8 text-[#021C48]" >공연 정보</h2>
+        <div className="flex items-center mb-4">
+          <h2 className="text-[28px] font-bold text-[#021C48]">공연 정보</h2>
+        </div>
 
         {/* 2) 메인 이미지 */}
         <div className="w-full h-64 bg-gray-200 rounded-md overflow-hidden mb-4">
           <img
-            
+            src="/placeholder.jpg"  /* 실제 이미지 경로로 바꿔주세요 */
             alt="Busking"
             className="w-full h-full object-cover"
           />
@@ -55,21 +62,63 @@ const DetailPage = () => {
         <hr className="border-gray-300 mb-4" />
 
         {/* 5) 공연 날짜보기 섹션 */}
-        <div>
+        <div className="mb-6">
           <p className="text-sm font-medium mb-2">공연 날짜보기</p>
           <div className="space-y-2">
             {dates.map((d, i) => (
               <button
                 key={i}
                 disabled={!d.available}
-                className={`w-full py-3 border rounded-md text-sm font-medium ${
-                  d.available
+                className={`w-full py-3 border rounded-md text-sm font-medium ${d.available
                     ? 'border-[#3160D8] text-[#3160D8]'
                     : 'border-gray-300 text-gray-400'
-                }`}
+                  }`}
               >
                 {d.label}
               </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 6) 구매하기 버튼 */}
+        <button
+          onClick={handlePurchase}
+          className="
+            w-full
+            bg-[#3160D8]
+            text-white
+            py-3
+            rounded-md
+            mb-6
+            hover:bg-[#274FB5]
+            transition-colors
+            duration-200
+          "
+        >
+          구매하기
+        </button>
+
+        {/* 7) 셋 리스트 */}
+        <div className="mb-6">
+          <p className="text-sm font-semibold text-gray-800 mb-2">
+            셋 리스트
+          </p>
+
+          {/* 회색 구분선 */}
+          <hr className="border-gray-200 mb-4" />
+
+          <div className="max-w-sm mx-auto px-10 divide-y divide-gray-200">
+            {[
+              'like JENNIE - 제니 (JENNIE)',
+              'Whiplash - IVE (아이브)',
+              'APT - 로제, Bruno Mars',
+              '미치게 그리워서 - 황가람',
+              '어떻게 이별까지 사랑하겠어 - 악뮤',
+            ].map((song, idx) => (
+              <div key={idx} className="flex items-center py-2">
+                <span className="text-gray-500">{idx + 1}</span>
+                <span className="ml-3 flex-1 text-gray-700">{song}</span>
+              </div>
             ))}
           </div>
         </div>
