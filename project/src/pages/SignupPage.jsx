@@ -1,23 +1,52 @@
-// SignupPage.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  EyeIcon,
-  EyeSlashIcon,
-} from '@heroicons/react/24/outline';
-import { FaTwitter, FaInstagram, FaFacebook} from 'react-icons/fa';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
+import axiosInstance from '../api/axiosInstance';
 
 const SignupPage = () => {
   const navigate = useNavigate();
 
-  // 비밀번호 가시성 토글 상태
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
+  const [form, setForm] = useState({
+    email: '',
+    nickname: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (form.password !== form.confirmPassword) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+
+    try {
+      const response = await axiosInstance.post('/api/user/signup/', {
+        email: form.email,
+        nickname: form.nickname,
+        password: form.password,
+      });
+      console.log('회원가입 성공:', response.data);
+      navigate('/login');
+    } catch (error) {
+      console.error('회원가입 실패:', error.response?.data || error.message);
+      alert('회원가입 실패');
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
-      {/* 1) 스크롤 가능한 메인 폼 영역 */}
       <div className="flex-grow">
         <div className="max-w-md mx-auto bg-white px-6 pt-0 pb-6 rounded-lg shadow">
           {/* 뒤로가기 */}
@@ -34,27 +63,39 @@ const SignupPage = () => {
           </h2>
 
           {/* 입력 폼 */}
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Email */}
             <input
+              name="email"
               type="text"
               placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
               className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
+              required
             />
 
             {/* Nickname */}
             <input
+              name="nickname"
               type="text"
               placeholder="Nickname"
+              value={form.nickname}
+              onChange={handleChange}
               className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
+              required
             />
 
             {/* Password */}
             <div className="relative">
               <input
+                name="password"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
+                value={form.password}
+                onChange={handleChange}
                 className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
+                required
               />
               <button
                 type="button"
@@ -72,9 +113,13 @@ const SignupPage = () => {
             {/* Confirm Password */}
             <div className="relative">
               <input
+                name="confirmPassword"
                 type={showConfirm ? 'text' : 'password'}
                 placeholder="Confirm Password"
+                value={form.confirmPassword}
+                onChange={handleChange}
                 className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
+                required
               />
               <button
                 type="button"
@@ -88,10 +133,18 @@ const SignupPage = () => {
                 )}
               </button>
             </div>
+
+            {/* Submit 버튼 */}
+            <button
+              type="submit"
+              className="w-full bg-[#3160D8] text-white py-3 rounded-md text-base font-medium hover:bg-[#274bb1]"
+            >
+              Create Account
+            </button>
           </form>
 
           {/* OR Divider */}
-          <div className="flex items-center justify-center text-gray-400 text-sm mt-4">
+          <div className="flex items-center justify-center text-gray-400 text-sm mt-6">
             <span className="mx-2">OR</span>
           </div>
 
@@ -109,13 +162,13 @@ const SignupPage = () => {
             <FaFacebook className="cursor-pointer hover:text-blue-600" />
           </div>
 
-          {/* Create Account 버튼 */}
-          <button
-            onClick={() => {/* TODO: 가입 처리 로직 */ }}
-            className="w-full bg-[#3160D8] text-white py-3 rounded-md text-base font-medium hover:bg-[#3160D8]"
-          >
-            Create Account
-          </button>
+          {/* 로그인 링크 */}
+          <p className="mt-4 text-center text-sm text-gray-600">
+            이미 계정이 있으신가요?{' '}
+            <Link to="/login" className="font-medium text-gray-600 hover:underline">
+              로그인
+            </Link>
+          </p>
         </div>
       </div>
     </div>
