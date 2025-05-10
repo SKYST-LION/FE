@@ -1,26 +1,47 @@
 // NavBar.jsx
 import React from 'react';
+import { HiMenu } from 'react-icons/hi';
 
-const NavBar = () => {
-  return (
-    <nav className="flex items-center justify-between bg-black px-4 py-3">
-      {/* 왼쪽: 햄버거 메뉴 */}
-      <button className="focus:outline-none">
-        
-      </button>
+const NavBar = () => (
+  <nav
+    className={`
+      flex flex-row items-center justify-between
+      bg-white
+      pt-[15px] pb-[18px]   /* Figma 세로 패딩 */
+      pl-[15px] pr-[18px]   /* Figma 가로 패딩 */
+    `}
+  >
+    {/* 1) 왼쪽 햄버거 메뉴 (고정 너비) */}
+    <button className="flex-none focus:outline-none">
+      <HiMenu className="w-6 h-6 text-[#3160D8]" />
+    </button>
 
-      {/* 가운데: Apple 로고 + Music 텍스트 */}
-      <div className="flex items-center space-x-1">
-        
-        <span className="text-white text-lg font-semibold">Skyst</span>
-      </div>
+    {/* 2) 가운데: 남는 공간 차지 + 텍스트 중앙 */}
+    <div className="flex-1 text-center">
+      <span
+        className="
+          text-[#3160D8]
+          text-[15px] leading-normal
+          font-inter font-bold
+        "
+      >
+        HOME
+      </span>
+    </div>
 
-      {/* 오른쪽: 사용자 프로필 아이콘 */}
-      <button className="focus:outline-none">
-      
-      </button>
-    </nav>
-  );
-};
+    {/* 3) 오른쪽 로그인 (고정 너비) */}
+    <button className="flex-none focus:outline-none">
+      <span
+        className="
+          text-[#3160D8]
+          text-[15px] leading-normal
+          font-inter font-bold
+        "
+      >
+        로그인
+      </span>
+    </button>
+  </nav>
+);
 
 export default NavBar;
