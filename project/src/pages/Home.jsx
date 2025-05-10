@@ -1,4 +1,5 @@
 import BuskingCard from "../components/BuskingCard";
+import MapBox from "../components/Mapbox";
 
 const Home = () => {
   const TopBanner = () => (
@@ -16,7 +17,8 @@ const Home = () => {
         {/* “최신 버스킹” 헤더에도 px-4 가 적용된 상태 */}
         <h2 className="text-[32px] font-bold px-4 pt-4">최신 버스킹</h2>
         
-      <BuskingCard/ >
+      <BuskingCard/>
+      <MapBox/>
 
       
         
