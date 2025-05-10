@@ -3,9 +3,9 @@ import {
   MdOutlineChatBubbleOutline,
   MdSearch,
   MdHome,
-  MdSchedule,
   MdPersonOutline,
 } from "react-icons/md";
+import { TbCalendarSearch } from "react-icons/tb"; 
 
 const BottomNav = () => {
   const location = useLocation();
@@ -15,7 +15,7 @@ const BottomNav = () => {
     { path: "/chat", icon: <MdOutlineChatBubbleOutline />, label: "chat" },
     { path: "/search", icon: <MdSearch />, label: "search" },
     { path: "/", icon: <MdHome />, label: "home" },
-    { path: "/schedule", icon: <MdSchedule />, label: "schedule" },
+    { path: "/schedule", icon: <TbCalendarSearch />, label: "schedule" },
     { path: "/mypage", icon: <MdPersonOutline />, label: "mypage" },
   ];
 
