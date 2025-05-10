@@ -30,6 +30,7 @@ const MyPage = () => {
   const currentList = reservations[activeTab];
 
   return (
+    
     <div className="max-w-md mx-auto p-4">
       {/* 탭 메뉴 */}
       <div className="flex justify-around text-sm border-b mb-4">
@@ -37,7 +38,11 @@ const MyPage = () => {
           <button
             key={key}
             onClick={() => setActiveTab(key)}
-            className={`pb-2 ${
+            className={`
+              flex-1
+              text-center
+              pb-2 
+              ${
               activeTab === key
                 ? "border-b-2 border-black font-semibold"
                 : "text-gray-400"

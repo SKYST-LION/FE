@@ -1,48 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { HiMenu } from 'react-icons/hi';
+import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import logo from '../components/logo.png';
+import SidebarMenu from '../pages/SidebarMenu';
 
 const NavBar = () => {
   const navigate = useNavigate(); // ✅ useNavigate 훅 사용
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <nav
-      className={`
-        flex flex-row items-center justify-between
-        bg-white
-        pt-[15px] pb-[18px]
-        pl-[15px] pr-[18px]
-      `}
+      <nav className="bg-white shadow">
+        <div className="max-w-md mx-auto flex items-center justify-between px-4 py-3">
+          {/* 햄버거 버튼 */}
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="text-2xl text-[#3160D8] focus:outline-none"
+          >
+            <HiOutlineMenu />
+          </button>
+
+          {/* 로고 */}
+          <Link to="/">
+            <img src={logo} alt="Logo" className="h-16" />
+          </Link>
+
+          {/* 로그인 */}
+          <button
+            onClick={() => navigate('/login')}
+            className="text-[#3160D8] font-bold focus:outline-none"
+          >
+            로그인
+          </button>
+        </div>
+
+        
+    <SidebarMenu
+      isOpen={isSidebarOpen}
+      onClose={() => setIsSidebarOpen(false)}
     >
-      {/* 왼쪽: 햄버거 메뉴 */}
-      <button className="flex-none focus:outline-none">
-        <HiMenu className="w-8 h-8 text-[#3160D8]" />
-      </button>
+      <a href="/" className="block hover:text-blue-600">Home</a>
+      <a href="/mypage" className="block hover:text-blue-600">마이페이지</a>
+      <a href="/" className="block hover:text-blue-600">나의 예약</a>
+      <a href="/" className="block hover:text-blue-600">공연 등록</a>
+      {/* 필요에 따라 메뉴 항목 추가 */}
+    </SidebarMenu>
 
-      {/* 가운데: 로고 */}
-      <div className="flex-1 flex justify-center">
-        <Link to="/" className="cursor-pointer">
-          <img src={logo} alt="Logo" className="h-16" />
-        </Link>
-      </div>
-
-      {/* 오른쪽: 로그인 버튼 */}
-      <button
-        className="flex-none focus:outline-none"
-        onClick={() => navigate("/login")} // ✅ 로그인 클릭 시 /login으로 이동
-      >
-        <span
-          className="
-            text-[#3160D8]
-            text-[16px] leading-normal
-            font-inter font-bold
-          "
-        >
-          로그인
-        </span>
-      </button>
     </nav>
+
+
   );
 };
 
