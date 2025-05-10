@@ -3,6 +3,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const LoginHeaderAndInputs = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -65,7 +66,7 @@ const LoginHeaderAndInputs = () => {
         </div>
         
           {/* Social Login Icons */}
-          <div className="flex justify-center space-x-6 text-gray-500 text-2xl mt-4">
+          <div className="flex justify-center space-x-6 text-gray-500 text-2xl mt-4 mb-4">
             <FaTwitter className="cursor-pointer hover:text-blue-400" />
             <FaInstagram className="cursor-pointer hover:text-pink-500" />
             <FaFacebook className="cursor-pointer hover:text-blue-600" />
@@ -74,7 +75,7 @@ const LoginHeaderAndInputs = () => {
           {/* Sign In Button */}
           <button
             type="submit"
-            className="w-full py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors mt-6"
+            className="w-full py-2 bg-[#3160D8] text-white rounded-lg hover:bg-[#3160D8] transition-colors mt-6"
           >
             Sign In
           </button>
@@ -82,9 +83,9 @@ const LoginHeaderAndInputs = () => {
         {/* Sign Up Link */}
         <p className="mt-4 text-center text-sm text-gray-600">
           Need An Account?{' '}
-          <a href="#" className="font-medium text-blue-500 hover:underline">
+          <Link to="/signup" className="font-medium text-gray-600 hover:underline">
             Sign Up
-          </a>
+          </Link>
         </p> 
     </div>
   );

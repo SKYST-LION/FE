@@ -103,7 +103,7 @@ const SignupPage = () => {
           </div>
 
           {/* Social Login Icons */}
-          <div className="flex justify-center space-x-6 text-gray-500 text-2xl mt-4">
+          <div className="flex justify-center space-x-6 text-gray-500 text-2xl mt-4 mb-4">
             <FaTwitter className="cursor-pointer hover:text-blue-400" />
             <FaInstagram className="cursor-pointer hover:text-pink-500" />
             <FaFacebook className="cursor-pointer hover:text-blue-600" />
@@ -112,7 +112,7 @@ const SignupPage = () => {
           {/* Create Account 버튼 */}
           <button
             onClick={() => {/* TODO: 가입 처리 로직 */ }}
-            className="w-full bg-blue-600 text-white py-3 rounded-md text-base font-medium hover:bg-blue-700"
+            className="w-full bg-[#3160D8] text-white py-3 rounded-md text-base font-medium hover:bg-[#3160D8]"
           >
             Create Account
           </button>
