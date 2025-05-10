@@ -1,11 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axiosInstance from "../api/axiosInstance";
 
 const MapBox = () => {
-  const performances = [
-    { id: 1, name: "방탄소년단 버스킹", lat: 37.5665, lng: 126.9780 },
-    { id: 2, name: "아이유 버스킹", lat: 37.5555, lng: 126.9707 },
-    { id: 3, name: "이무진 버스킹", lat: 37.5581, lng: 126.9985 },
-  ];
+  const [performances, setPerformances] = useState([]);
+
+  useEffect(() => {
+    // 공연 데이터 불러오기
+    const fetchPerformances = async () => {
+      try {
+        const response = await axiosInstance.get("/api/coordinate/map/");
+        setPerformances(response.data);
+      } catch (error) {
+        console.error("공연 정보 불러오기 실패:", error);
+      }
+    };
+
+    fetchPerformances();
+  }, []);
 
   useEffect(() => {
     if (document.querySelector('script[src*="kakao.com"]')) {
@@ -19,7 +30,6 @@ const MapBox = () => {
     script.async = true;
 
     script.onload = () => {
-      console.log("✅ Kakao Maps SDK 로드 완료");
       if (!window.kakao || !window.kakao.maps) {
         console.error("❌ window.kakao.maps 가 없습니다.");
         return;
@@ -37,11 +47,11 @@ const MapBox = () => {
 
           // 마커 찍기
           performances.forEach((perf) => {
-            const markerPosition = new window.kakao.maps.LatLng(perf.lat, perf.lng);
+            const markerPosition = new window.kakao.maps.LatLng(perf.latitude, perf.longitude);
             new window.kakao.maps.Marker({
               map,
               position: markerPosition,
-              title: perf.name,
+              title: perf.artist,
             });
           });
         };
@@ -64,18 +74,13 @@ const MapBox = () => {
     };
 
     document.head.appendChild(script);
-  }, []);
+  }, [performances]); // 의존성에 performances 추가
 
   return (
     <div className="w-full max-w-[390px] bg-white rounded-xl shadow-md p-4 flex flex-col gap-4 mx-auto">
-      {/* 상단 텍스트 + 버튼 */}
       <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <h2 className="text-base font-bold">내 주변 버스킹 찾기</h2>
-        </div>
+        <h2 className="text-base font-bold">내 주변 버스킹 찾기</h2>
       </div>
-
-      {/* 지도 */}
       <div className="w-full h-[250px] rounded-lg overflow-hidden">
         <div id="map" className="w-full h-full"></div>
       </div>
