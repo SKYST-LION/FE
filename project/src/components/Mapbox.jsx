@@ -66,7 +66,6 @@ const MapBox = () => {
       {/* 상단 텍스트 + 버튼 */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="logo" className="h-5 w-auto" />
           <h2 className="text-base font-bold">내 주변 버스킹 찾기</h2>
         </div>
         <button className="border border-[#6B3E00] text-[#6B3E00] text-xs px-3 py-1 rounded-full">
