@@ -1,6 +1,5 @@
 import ScrollCarousel from "../components/ScrollCarousel";
 import MapBox from "../components/Mapbox";
-import {BottomNav} from "../components/BottomNav"
 
 const Home = () => {
   
@@ -21,8 +20,7 @@ const Home = () => {
         <MapBox />
       </main>
 
-    {/* 하단 네비게이션 바 */}
-    <BottomNav />
+    
     </div>
   );
 };
