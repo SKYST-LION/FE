@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar.jsx"
 function App() {
   return (
     <div className="App">
-       <Navbar/>
+       <NavBar/>
       <h1>Hello World</h1>
      
     </div>
