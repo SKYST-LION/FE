@@ -39,14 +39,14 @@ const SignupPage = () => {
             <input
               type="text"
               placeholder="Email"
-              className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
             />
 
             {/* Nickname */}
             <input
               type="text"
               placeholder="Nickname"
-              className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
             />
 
             {/* Password */}
@@ -54,7 +54,7 @@ const SignupPage = () => {
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
               />
               <button
                 type="button"
@@ -74,7 +74,7 @@ const SignupPage = () => {
               <input
                 type={showConfirm ? 'text' : 'password'}
                 placeholder="Confirm Password"
-                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm placeholder-gray-400 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3160D8]"
               />
               <button
                 type="button"

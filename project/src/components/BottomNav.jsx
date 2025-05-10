@@ -29,11 +29,11 @@ const BottomNav = () => {
               key={tab.label}
               onClick={() => navigate(tab.path)}
               className={`flex flex-col items-center cursor-pointer ${
-                isActive ? "text-blue-500" : "text-gray-400 hover:text-blue-500"
+                isActive ? "text-[#3160D8]" : "text-gray-400 hover:text-[#3160D8]"
               }`}
             >
               {tab.icon}
-              {isActive && <span className="w-6 h-0.5 bg-blue-500 mt-1"></span>}
+              {isActive && <span className="w-6 h-0.5 bg-[#3160D8] mt-1"></span>}
             </div>
           );
         })}

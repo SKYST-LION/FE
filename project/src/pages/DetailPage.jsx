@@ -69,7 +69,7 @@ const DetailPage = () => {
                 disabled={!d.available}
                 className={`w-full py-3 border rounded-md text-sm font-medium ${
                   d.available
-                    ? 'border-blue-500 text-blue-600'
+                    ? 'border-[#3160D8] text-[#3160D8]'
                     : 'border-gray-300 text-gray-400'
                 }`}
               >
