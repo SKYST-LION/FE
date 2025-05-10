@@ -30,15 +30,9 @@
                 className="min-w-[280px] bg-white shadow-sm rounded-lg overflow-hidden"
                 >
                 <div className="px-4 pt-4">
-<<<<<<< HEAD
-                    <p className="text-[18px] font-semibold text-[#3160D8]">{card.location}</p>
-                    <p className="text-[16px] font-medium">{card.title}</p>
-                    <p className="text-[16px] text-gray-400">{card.artist}</p>
-=======
                     <p className="text-[18px] font-semibold">{card.location}</p>
                     <p className="text-[16px] font-medium">{card.artist}</p>
                     <p className="text-[16px] text-gray-400">{card.date}</p>
->>>>>>> a17481825c47aaf28f22459a484e0be8cd76fd82
                 </div>
                 <div className="px-4 pt-4 pb-4">
                     <img
