@@ -29,7 +29,7 @@
                 className="min-w-[280px] bg-white shadow-sm rounded-lg overflow-hidden"
                 >
                 <div className="px-4 pt-4">
-                    <p className="text-[18px] font-semibold">{card.location}</p>
+                    <p className="text-[18px] font-semibold text-[#3160D8]">{card.location}</p>
                     <p className="text-[16px] font-medium">{card.title}</p>
                     <p className="text-[16px] text-gray-400">{card.artist}</p>
                 </div>
